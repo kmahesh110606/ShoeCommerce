@@ -1,0 +1,80 @@
+:root{
+  --bg:#6b6b6b;
+  --card:#454343;
+  --accent:#10adad;
+  --text:#ffffff;
+  --border:#6ee7e7;
+}
+body{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--bg);
+  font-family:Inter,system-ui,Arial;
+}
+.payment-card{
+  width:360px;
+  background:var(--card);
+  color:var(--text);
+  border-radius:14px;
+  padding:20px;
+  box-shadow:0 8px 24px rgba(0,0,0,0.3);
+}
+h2{
+  text-align:center;
+  margin-bottom:16px;
+}
+.section{
+  margin-bottom:18px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:12px;
+}
+.section h3{
+  margin:0 0 10px;
+  font-size:1rem;
+}
+.qr{
+  display:flex;
+  justify-content:center;
+}
+.qr img{
+  width:160px;
+  border-radius:8px;
+  background:#fff;
+  padding:8px;
+}
+.input{
+  width:100%;
+  padding:8px 2px 8px 2px;
+  margin-bottom:8px;
+  border-radius:6px;
+  border:none;
+  outline:none;
+}
+.row{
+  display:flex;
+  gap:8px;
+}
+button{
+  width:100%;
+  padding:10px;
+  background:var(--accent);
+  color:#fff;
+  border:none;
+  border-radius:8px;
+  font-size:1rem;
+  font-weight:600;
+  cursor:pointer;
+}
+.cod{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:0.95rem;
+}
+@media(max-width:400px){
+  .payment-card{width:92%}
+}
