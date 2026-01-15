@@ -2,10 +2,10 @@ import { categories } from '../../data.js';
 
 const DEFAULT_THEME = {
   name: 'Default',
-  'primary-color': 'rgba(36, 36, 36, 0.85)',
-  'secondary-color': 'rgba(0, 0, 0, 0.65)',
-  'text-color-primary': '#ffffff',
-  'text-color-secondary': 'rgba(255, 255, 255, 0.85)',
+  'primary-color': 'rgba(34, 34, 34, 0.85)',
+  'secondary-color': 'rgba(34, 34, 34, 0.65)',
+  'text-color-primary': '#0a0a0a',
+  'text-color-secondary': 'rgba(10, 10, 10, 0.75)',
   'font-family': 'system-ui, Arial, sans-serif',
 };
 

@@ -21,10 +21,7 @@ export default function Home() {
   }, []);
 
   const renderedCategories = useMemo(() => {
-    const n = safeCategories.length;
-    if (n <= 1) return safeCategories;
-
-    return [safeCategories[n - 1], ...safeCategories, safeCategories[0]];
+    return safeCategories;
   }, [safeCategories]);
 
   const activeCategory = safeCategories[activeIndex] ?? safeCategories[0];
@@ -48,10 +45,7 @@ export default function Home() {
     if (el) el.scrollIntoView({ behavior, inline: 'start', block: 'nearest' });
   };
 
-  const realToRenderIndex = (realIdx) => {
-    if (safeCategories.length <= 1) return realIdx;
-    return realIdx + 1;
-  };
+  const realToRenderIndex = (realIdx) => realIdx;
 
   useEffect(() => {
     activeIndexRef.current = activeIndex;
@@ -62,10 +56,11 @@ export default function Home() {
 
     const id = setInterval(() => {
       const current = activeIndexRef.current;
-      const next = current >= safeCategories.length - 1 ? 0 : current + 1;
-      const currentRender = realToRenderIndex(current);
-      const nextRender = current === safeCategories.length - 1 ? currentRender + 1 : realToRenderIndex(next);
-      scrollToRenderIndex(nextRender);
+      if (current < safeCategories.length - 1) {
+        const next = current + 1;
+        scrollToRenderIndex(realToRenderIndex(next));
+      }
+      // Do nothing if at last; no looping.
     }, 10_000);
 
     return () => clearInterval(id);
@@ -99,34 +94,7 @@ export default function Home() {
     return () => observer.disconnect();
   }, [renderedCategories.length, safeCategories.length]);
 
-  useEffect(() => {
-    const root = containerRef.current;
-    if (!root) return;
-    if (safeCategories.length <= 1) return;
-
-    // Start at first real slide (render index 1) without animation.
-    requestAnimationFrame(() => {
-      scrollToRenderIndex(1, 'auto');
-    });
-
-    const onScroll = () => {
-      const maxScrollLeft = root.scrollWidth - root.clientWidth;
-      const epsilon = 4;
-
-      // If we scrolled to the leading clone (render index 0), jump to last real.
-      if (root.scrollLeft <= epsilon) {
-        scrollToRenderIndex(renderedCategories.length - 2, 'auto');
-      }
-
-      // If we scrolled to trailing clone, jump to first real.
-      if (root.scrollLeft >= maxScrollLeft - epsilon) {
-        scrollToRenderIndex(1, 'auto');
-      }
-    };
-
-    root.addEventListener('scroll', onScroll, { passive: true });
-    return () => root.removeEventListener('scroll', onScroll);
-  }, [renderedCategories.length, safeCategories.length]);
+  // No looping behavior; start at first slide and let scroll-snap clamp naturally.
 
 
   return (
@@ -154,9 +122,11 @@ export default function Home() {
           onClick={() => {
             if (safeCategories.length <= 1) return;
             const current = activeIndexRef.current;
-            const currentRender = realToRenderIndex(current);
-            scrollToRenderIndex(currentRender - 1);
+            if (current > 0) {
+              scrollToRenderIndex(current - 1);
+            }
           }}
+          disabled={activeIndex <= 0}
           aria-label="Previous category"
         >
           ‹
@@ -164,8 +134,7 @@ export default function Home() {
 
         <div className="home-carousel" ref={containerRef}>
           {renderedCategories.map((cat, renderIdx) => {
-          const n = safeCategories.length;
-          const realIdx = n <= 1 ? renderIdx : (renderIdx === 0 ? n - 1 : renderIdx === n + 1 ? 0 : renderIdx - 1);
+          const realIdx = renderIdx;
           const featuredNames = Array.isArray(cat['featured-products']) ? cat['featured-products'] : [];
           const featuredProducts = featuredNames
             .map((name) => ({ name, product: findProductByName(name) }))
@@ -227,9 +196,11 @@ export default function Home() {
                     onClick={() => {
                       if (safeCategories.length <= 1) return;
                       const current = activeIndexRef.current;
-                      const currentRender = realToRenderIndex(current);
-                      scrollToRenderIndex(currentRender + 1);
+                      if (current < safeCategories.length - 1) {
+                        scrollToRenderIndex(current + 1);
+                      }
                     }}
+                    disabled={activeIndex >= safeCategories.length - 1}
                   >
                     Next ›
                   </button>
@@ -246,9 +217,11 @@ export default function Home() {
           onClick={() => {
             if (safeCategories.length <= 1) return;
             const current = activeIndexRef.current;
-            const currentRender = realToRenderIndex(current);
-            scrollToRenderIndex(currentRender + 1);
+            if (current < safeCategories.length - 1) {
+              scrollToRenderIndex(current + 1);
+            }
           }}
+          disabled={activeIndex >= safeCategories.length - 1}
           aria-label="Next category"
         >
           ›

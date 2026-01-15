@@ -46,8 +46,8 @@ export default function ProductDetails() {
     fontFamily: 'var(--cat-font-family)',
     '--nav-bg': 'var(--cat-primary)',
     '--nav-border': 'rgba(255,255,255,0.16)',
-    '--nav-link': 'var(--cat-text-primary)',
-    '--nav-link-muted': 'var(--cat-text-secondary)',
+    '--nav-link': '#ffffff',
+    '--nav-link-muted': 'rgba(255,255,255,0.85)',
   };
 
   const discountedPrice =
