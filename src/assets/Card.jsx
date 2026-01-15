@@ -1,31 +1,38 @@
-import '../styles/card.css';
+import '../styles/styles.css';
+import { Link } from 'react-router-dom';
+import { getCategoryTheme } from '../utils/categoryTheme';
 //import product from '../../data.js'
 
+function Card({ id, name, price, rating, image, category }) {
+  const theme = getCategoryTheme(category);
+  const cardStyle = {
+    '--glow-color': theme['secondary-color'],
+  };
 
-function Card() {
-return ( 
-<body>
-  <div class="card">
-    <div class="product-image">
-      <img src="images/comfyslip.jpeg" alt="Product image"/>
-    </div>
-    <div class="product-content">
-      <div class="product-name">Comfort Plush Sneakers</div>
-      <div class="product-rating">
-        <div class="stars">
-          <div class="star filled">★</div>
-          <div class="star filled">★</div>
-          <div class="star filled">★</div>
-          <div class="star filled">★</div>
-          <div class="star">★</div>
+  return ( 
+    <>
+      <div className="card" style={cardStyle}>
+        <div className="product-image">
+          <img src={image} alt={`${name} image`} />
         </div>
-        <div class="product-price">₹2999</div>
+        <div className="product-content">
+          <div className="product-name">{name}</div>
+          <div className="product-rating">
+            <span>{rating} ⭐</span>
+            <div className="product-price">₹{price}</div>
+          </div>
+          <div className="product-card-actions">
+            <Link className="cta" to={`/product/${id}`}>
+              View details
+            </Link>
+            <a className="cta cta-secondary" href="#">
+              Add to cart
+            </a>
+          </div>
+        </div>
       </div>
-      <a class="cta" href="#">Add to cart</a>
-    </div>
-  </div>
-</body>
-)
+    </>
+  );
 }
 
 export default Card;

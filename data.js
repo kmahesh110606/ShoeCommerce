@@ -303,21 +303,106 @@ export const products = [
 
 export const categories = [
     {
-        name: "Office"
+        name: "Office",
+        "primary-color": "#242222a9",
+        "secondary-color": "#0a0707c6",
+        "text-color-primary": "#ffffff",
+        "text-color-secondary": "#d1cfcfff",
+        "font-family": "'Lucida Handwriting', cursive, sans-serif",
+        "background-image": "images/officepro.jpeg",
+        "description1": "Polished silhouettes built for long workdays.",
+        "description2": "Premium finishes, cushioned comfort, and clean lines.",
+        "description3": "From meetings to commutes—stay sharp all day.",
+        "featured-products": [
+            "Office Pro Loafers",
+            "Daily Office Wear Loafers",
+            "Premium Workday Shoes"
+        ]
     },
     {
-        name: "Casual"
+        name: "Casual",
+        "primary-color": "#4a403fa9",
+        "secondary-color": "#0e3a15c6",
+        "text-color-primary": "rgb(127, 241, 104)",
+        "text-color-secondary": "#90c89ced",
+        "font-family": "'Comic Sans MS', cursive, sans-serif",
+        "background-image": "images/comfyslip.jpeg",
+        "description1": "Everyday comfort, effortless style.",
+        "description2": "Soft cushioning and lightweight builds for daily wear.",
+        "description3": "Your go-to pairs for errands, hangouts, and weekends.",
+        "featured-products": [
+            "Comfort Plush Sneakers",
+            "Everyday Flex Sneakers",
+            "Street Smart Casuals"
+        ]
+
     },
     {
-        name: "Sports"
+        name: "Sports",
+        "primary-color": "#061634a9",
+        "secondary-color": "#02102ec6",
+        "text-color-primary": "#ffffff",
+        "text-color-secondary": "#d1cfcfff",
+        "font-family": "'Tahoma', Gadget, sans-serif",
+        "background-image": "images/running.jpeg",
+        "description1": "Performance-first shoes engineered for movement.",
+        "description2": "Breathable uppers, stable support, and responsive cushioning.",
+        "description3": "Train harder, run longer, recover faster.",
+        "featured-products": [
+            "Urban Runner Shoes",
+            "Velocity Pro Runners",
+            "Power Sprint Trainers"
+        ]
     },
     {
-        name: "Formal"
+        name: "Formal",
+        "primary-color": "#3e2c23a9",
+        "secondary-color": "#1b0e06c6",
+        "text-color-primary": "#ffffff",
+        "text-color-secondary": "#d1cfcfff",
+        "font-family": "'Times New Roman', Times, serif",
+        "background-image": "images/classicleather.jpeg",
+        "description1": "Timeless craftsmanship for elevated occasions.",
+        "description2": "Leather-forward looks with refined detailing.",
+        "description3": "Dress up with confidence—classic never fades.",
+        "featured-products": [
+            "Classic Leather Oxfords",
+            "Executive Leather Derbies",
+            "Classic Brogue Shoes"
+        ]
     },
     {
-        name: "Sandals"
+        name: "Sandals",
+        "primary-color": "#754c24a9",
+        "secondary-color": "#3e220bc6",
+        "text-color-primary": "#ffffff",
+        "text-color-secondary": "#d1cfcfff",
+        "font-family": "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+        "background-image": "images/summerbreeze.jpeg",
+        "description1": "Breezy comfort for warm-weather days.",
+        "description2": "Light straps, soft footbeds, and easy styling.",
+        "description3": "Perfect for travel, strolls, and sunny weekends.",
+        "featured-products": [
+            "Summer Breeze Sandals",
+            "Beach Walk Sandals",
+            "Comfort Glide Sandals"
+        ]
     },
     {
-        name: "Boots"
+        name: "Boots",
+        "primary-color": "#4b3832a9",
+        "secondary-color": "#1e0f0bc6",
+        "text-color-primary": "#ffffff",
+        "text-color-secondary": "#d1cfcfff",
+        "font-family": "'Courier New', Courier, monospace",
+        "background-image": "images/mountaintrek.jpeg",
+        "description1": "Rugged builds designed for real terrain.",
+        "description2": "Grip, durability, and protection—without sacrificing comfort.",
+        "description3": "From trails to streets, boots that go anywhere.",
+        "featured-products": [
+            "Mountain Trek Boots",
+            "Rugged Trail Boots",
+            "Winter Shield Boots"
+        ]
     }
 ]
