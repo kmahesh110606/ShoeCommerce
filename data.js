@@ -4,7 +4,7 @@ export const products = [
         name: "Comfort Plush Sneakers",
         price: 2999,
         rating: 4,
-        image: "/images/01.jpeg",   
+        image: "images/01.jpeg",   
         discount: 10,
         category: "Casual",
         description: "Experience ultimate comfort with our Comfort Plush Sneakers."
@@ -14,7 +14,7 @@ export const products = [
         name: "Urban Runner Shoes",
         price: 3499,
         rating: 5,
-        image: "/images/02.jpeg",
+        image: "images/02.jpeg",
         discount: 15,
         category: "Sports",
         description: "Hit the streets with confidence in our Urban Runner Shoes, perfect for city adventures and workouts."
@@ -24,7 +24,7 @@ export const products = [
         name: "Classic Leather Oxfords",
         price: 4999,
         rating: 4,
-        image: "/images/03.jpeg",
+        image: "images/03.jpeg",
         discount: 20,
         category: "Formal",
         description: "Elevate your style with our Classic Leather Oxfords, crafted for timeless elegance and comfort."
@@ -34,7 +34,7 @@ export const products = [
         name: "Summer Breeze Sandals",
         price: 1999,
         rating: 3,
-        image: "/images/04.jpeg",
+        image: "images/04.jpeg",
         discount: 5,
         category: "Sandals",
         description: "Stay cool and comfortable with our Summer Breeze Sandals, perfect for warm weather outings."
@@ -44,7 +44,7 @@ export const products = [
         name: "Mountain Trek Boots",
         price: 5999,
         rating: 5,
-        image: "/images/05.jpeg",
+        image: "images/05.jpeg",
         discount: 25,
         category: "Boots",
         description: "Conquer any terrain with our Mountain Trek Boots, designed for durability and support on your adventures."
@@ -54,7 +54,7 @@ export const products = [
         name: "Office Pro Loafers",
         price: 3999,
         rating: 4,
-        image: "/images/06.jpeg",
+        image: "images/06.jpeg",
         discount: 15,
         category: "Office",
         description: "Step into professionalism with our Office Pro Loafers, combining style and comfort for your workday."
@@ -64,7 +64,7 @@ export const products = [
         name: "Everyday Flex Sneakers",
         price: 2799,
         rating: 4,
-        image: "/images/07.jpeg",
+        image: "images/07.jpeg",
         discount: 12,
         category: "Casual",
         description: "Lightweight Everyday Flex Sneakers built for comfort and daily wear."
@@ -74,7 +74,7 @@ export const products = [
         name: "Street Smart Casuals",
         price: 3199,
         rating: 5,
-        image: "/images/08.jpeg",
+        image: "images/08.jpeg",
         discount: 18,
         category: "Casual",
         description: "Stylish casual shoes designed for urban fashion and comfort."
@@ -84,7 +84,7 @@ export const products = [
         name: "Power Sprint Trainers",
         price: 3699,
         rating: 4,
-        image: "/images/09.jpeg",
+        image: "images/09.jpeg",
         discount: 10,
         category: "Sports",
         description: "High-performance trainers for intense workouts and running."
@@ -94,7 +94,7 @@ export const products = [
         name: "Velocity Pro Runners",
         price: 4299,
         rating: 5,
-        image: "/images/10.jpeg",
+        image: "images/10.jpeg",
         discount: 20,
         category: "Sports",
         description: "Engineered for speed and endurance with superior cushioning."
@@ -104,7 +104,7 @@ export const products = [
         name: "Elite Court Shoes",
         price: 3899,
         rating: 4,
-        image: "/images/11.jpeg",
+        image: "images/11.jpeg",
         discount: 15,
         category: "Sports",
         description: "Designed for agility and stability during sports activities."
@@ -114,7 +114,7 @@ export const products = [
         name: "Executive Leather Derbies",
         price: 5499,
         rating: 5,
-        image: "/images/12.jpeg",
+        image: "images/12.jpeg",
         discount: 25,
         category: "Formal",
         description: "Premium leather derbies perfect for formal occasions."
@@ -124,7 +124,7 @@ export const products = [
         name: "Modern Slim Oxfords",
         price: 4799,
         rating: 4,
-        image: "/images/13.jpeg",
+        image: "images/13.jpeg",
         discount: 18,
         category: "Formal",
         description: "Sleek oxfords designed for modern formal wear."
@@ -134,7 +134,7 @@ export const products = [
         name: "Classic Brogue Shoes",
         price: 5199,
         rating: 5,
-        image: "/images/14.jpeg",
+        image: "images/14.jpeg",
         discount: 22,
         category: "Formal",
         description: "Traditional brogue detailing with premium craftsmanship."
@@ -144,7 +144,7 @@ export const products = [
         name: "Beach Walk Sandals",
         price: 1799,
         rating: 3,
-        image: "/images/15.jpeg",
+        image: "images/15.jpeg",
         discount: 8,
         category: "Sandals",
         description: "Comfortable sandals ideal for beach and casual outings."
@@ -154,7 +154,7 @@ export const products = [
         name: "Urban Strap Sandals",
         price: 2199,
         rating: 4,
-        image: "/images/16.jpeg",
+        image: "images/16.jpeg",
         discount: 10,
         category: "Sandals",
         description: "Durable strap sandals with a modern design."
@@ -164,7 +164,7 @@ export const products = [
         name: "Comfort Glide Sandals",
         price: 2499,
         rating: 5,
-        image: "/images/17.jpeg",
+        image: "images/17.jpeg",
         discount: 15,
         category: "Sandals",
         description: "Extra cushioning for long-lasting comfort."
@@ -174,7 +174,7 @@ export const products = [
         name: "Rugged Trail Boots",
         price: 6499,
         rating: 5,
-        image: "/images/18.jpeg",
+        image: "images/18.jpeg",
         discount: 30,
         category: "Boots",
         description: "Built tough for rough terrains and extreme conditions."
@@ -184,7 +184,7 @@ export const products = [
         name: "Winter Shield Boots",
         price: 6999,
         rating: 4,
-        image: "/images/19.jpeg",
+        image: "images/19.jpeg",
         discount: 20,
         category: "Boots",
         description: "Insulated boots to keep your feet warm and protected."
@@ -194,7 +194,7 @@ export const products = [
         name: "Urban Explorer Boots",
         price: 5799,
         rating: 4,
-        image: "/images/20.jpeg",
+        image: "images/20.jpeg",
         discount: 18,
         category: "Boots",
         description: "Stylish boots designed for city adventures."
@@ -204,7 +204,7 @@ export const products = [
         name: "Daily Office Wear Loafers",
         price: 3599,
         rating: 4,
-        image: "/images/21.jpeg",
+        image: "images/21.jpeg",
         discount: 12,
         category: "Office",
         description: "Comfortable loafers perfect for everyday office use."
@@ -214,7 +214,7 @@ export const products = [
         name: "Premium Workday Shoes",
         price: 4299,
         rating: 5,
-        image: "/images/22.jpeg",
+        image: "images/22.jpeg",
         discount: 20,
         category: "Office",
         description: "Elegant office shoes with premium finishing."
@@ -224,7 +224,7 @@ export const products = [
         name: "Smart Formal Loafers",
         price: 3999,
         rating: 4,
-        image: "/images/23.jpeg",
+        image: "images/23.jpeg",
         discount: 15,
         category: "Office",
         description: "Smart-looking loafers suitable for meetings and daily work."
@@ -234,7 +234,7 @@ export const products = [
         name: "Relax Fit Casual Shoes",
         price: 2899,
         rating: 3,
-        image: "/images/24.jpeg",
+        image: "images/24.jpeg",
         discount: 10,
         category: "Casual",
         description: "Relaxed fit casual shoes for easygoing comfort."
@@ -244,7 +244,7 @@ export const products = [
         name: "Active Pulse Trainers",
         price: 3399,
         rating: 4,
-        image: "/images/25.jpeg",
+        image: "images/25.jpeg",
         discount: 14,
         category: "Sports",
         description: "Breathable trainers for active lifestyles."
@@ -254,7 +254,7 @@ export const products = [
         name: "Classic Office Lace-Ups",
         price: 4599,
         rating: 5,
-        image: "/images/26.jpeg",
+        image: "images/26.jpeg",
         discount: 20,
         category: "Office",
         description: "Classic lace-up shoes designed for formal office wear."
@@ -264,7 +264,7 @@ export const products = [
         name: "Elegant Formal Slip-Ons",
         price: 4899,
         rating: 4,
-        image: "/images/27.jpeg",
+        image: "images/27.jpeg",
         discount: 18,
         category: "Formal",
         description: "Elegant slip-ons for formal occasions."
@@ -274,7 +274,7 @@ export const products = [
         name: "Adventure Grip Boots",
         price: 6299,
         rating: 5,
-        image: "/images/28.jpeg",
+        image: "images/28.jpeg",
         discount: 28,
         category: "Boots",
         description: "High-grip boots made for adventure and trekking."
@@ -284,7 +284,7 @@ export const products = [
         name: "Minimal Casual Sneakers",
         price: 2599,
         rating: 4,
-        image: "/images/29.jpeg",
+        image: "images/29.jpeg",
         discount: 10,
         category: "Casual",
         description: "Minimal design sneakers for everyday fashion."
@@ -294,7 +294,7 @@ export const products = [
         name: "Comfort Office Walkers",
         price: 3799,
         rating: 5,
-        image: "/images/30.jpeg",
+        image: "images/30.jpeg",
         discount: 15,
         category: "Office",
         description: "All-day comfort shoes tailored for office professionals."
