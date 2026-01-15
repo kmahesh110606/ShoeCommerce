@@ -13,13 +13,16 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 a {
   font-weight: 500;
-  color: #4d4303;
   text-decoration: inherit;
 }
 a:hover {
-  color: #4d4303;
+  color: inherit;
 }
 
 body {
@@ -27,17 +30,12 @@ body {
   min-width: 320px;
   min-height: 100vh;
   overflow-x: hidden;
-  width: 100vw;
+  width: 100%;
   display: block;
 }
 
 html {
   overflow-x: hidden;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
 }
 
 button {
@@ -49,10 +47,10 @@ button {
   font-family: inherit;
   background-color: #1a1a1a;
   cursor: pointer;
-  transition: transform 0.25s ease-in;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 button:hover {
-  transform: scale(1.05);
+  background-color: #141414;
 }
 button:focus,
 button:focus-visible {

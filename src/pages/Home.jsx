@@ -128,17 +128,6 @@ export default function Home() {
     return () => root.removeEventListener('scroll', onScroll);
   }, [renderedCategories.length, safeCategories.length]);
 
-  if (!safeCategories.length) {
-    return (
-      <>
-        <Nav />
-        <div className="home-empty">
-          <h1>Welcome to ShoeCommerce</h1>
-          <p>No categories configured yet.</p>
-        </div>
-      </>
-    );
-  }
 
   return (
     <div
