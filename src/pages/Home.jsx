@@ -176,7 +176,7 @@ export default function Home() {
           const backgroundImage = cat['background-image'];
 
           const slideBg = backgroundImage
-            ? `linear-gradient(135deg, ${secondary} 0%, ${primary} 55%, rgba(0,0,0,0.15) 100%), url(${backgroundImage})`
+            ? `linear-gradient(135deg, ${secondary} 0%, ${primary} 55%, rgba(0,0,0,0.15) 100%), url(/ShoeCommerce/${backgroundImage})`
             : `linear-gradient(135deg, ${secondary} 0%, ${primary} 100%)`;
 
           return (
