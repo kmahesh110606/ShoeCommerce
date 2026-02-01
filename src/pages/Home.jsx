@@ -45,26 +45,12 @@ export default function Home() {
     if (el) el.scrollIntoView({ behavior, inline: 'start', block: 'nearest' });
   };
 
-  const realToRenderIndex = (realIdx) => realIdx;
-
   useEffect(() => {
     activeIndexRef.current = activeIndex;
   }, [activeIndex]);
 
-  useEffect(() => {
-    if (safeCategories.length <= 1) return;
+  // Note: automatic carousel autoscroll removed; navigation now only via controls or user scroll.
 
-    const id = setInterval(() => {
-      const current = activeIndexRef.current;
-      if (current < safeCategories.length - 1) {
-        const next = current + 1;
-        scrollToRenderIndex(realToRenderIndex(next));
-      }
-      // Do nothing if at last; no looping.
-    }, 10_000);
-
-    return () => clearInterval(id);
-  }, [safeCategories.length]);
 
   useEffect(() => {
     const root = containerRef.current;

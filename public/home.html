@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ShoeCommerce — Home (Static)</title>
+  <style>
+    :root{
+      --bg:#050505;
+      --card:rgba(18,18,18,0.92);
+      --accent:#10adad;
+      --text:#ffffff;
+    }
+    body{margin:0;background:var(--bg);font-family:Inter,system-ui,Arial;color:var(--text)}
+
+    .navbar{padding:18px 20px;display:flex;justify-content:space-between;align-items:center;background:rgba(0,0,0,0.55);border-bottom:1px solid rgba(255,255,255,0.06)}
+    .nav-brand{color:#fff;text-decoration:none;font-weight:900}
+    .nav-links a{color:#ddd;text-decoration:none;margin-left:12px;font-weight:700}
+
+    /* Home carousel (pure HTML/CSS scrolling + anchors) */
+    .home-page{width:100vw;min-height:100vh;position:relative;overflow:hidden}
+    .home-carousel{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;width:100vw;height:100vh;gap:16px;padding:0 12px;box-sizing:border-box}
+    .home-slide{min-width:94vw;height:100vh;scroll-snap-align:start;background-size:cover;background-position:center;border-radius:6px;border:1px solid rgba(255,255,255,0.12);position:relative}
+    .home-slide-content{padding:120px 22px 54px;color:var(--cat-text-primary,#fff);max-width:720px}
+    .home-kicker{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.16);font-weight:900}
+    .home-slide-title{margin:12px 0 14px;font-size:2rem}
+    .home-bullets{margin:0 0 18px;padding-left:18px;color:var(--cat-text-secondary,rgba(255,255,255,0.85))}
+    .home-featured-items{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+    .home-chip{display:inline-flex;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.16);text-decoration:none;color:inherit;font-weight:800}
+    .home-cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+    .home-cta{padding:10px 14px;border-radius:12px;text-decoration:none;font-weight:900;border:1px solid rgba(255,255,255,0.14);display:inline-flex;align-items:center}
+    .home-cta-primary{background:rgba(0,0,0,0.45);color:#fff}
+    .home-cta-secondary{background:rgba(255,255,255,0.12);color:#fff}
+    .home-cta-tertiary{background:rgba(0,0,0,0.25);color:#fff}
+
+    /* Responsive tweaks */
+    @media(max-width:720px){.home-slide{min-width:96vw}.home-slide-title{font-size:1.65rem}.home-slide-content{padding-top:90px}}
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <a class="nav-brand" href="/">ShoeCommerce</a>
+    <nav class="nav-links">
+      <a href="#slide-1">Office</a>
+      <a href="#slide-2">Casual</a>
+      <a href="#slide-3">Sports</a>
+      <a href="#slide-4">Formal</a>
+      <a href="#slide-5">Sandals</a>
+      <a href="#slide-6">Boots</a>
+    </nav>
+  </header>
+
+  <main class="home-page">
+    <div class="home-carousel">
+
+      <section id="slide-1" class="home-slide" style="--cat-text-primary:#ffffff;--cat-text-secondary:#d1cfcfff;font-family:'Lucida Handwriting', cursive, sans-serif;background-image: linear-gradient(135deg, #0a0707c6 0%, #242222a9 55%, rgba(0,0,0,0.15) 100%), url('/ShoeCommerce/images/officepro.jpeg');">
+        <div class="home-slide-content">
+          <div class="home-kicker">Office</div>
+          <h1 class="home-slide-title">Polished silhouettes built for long workdays.</h1>
+          <ul class="home-bullets">
+            <li>Premium finishes, cushioned comfort, and clean lines.</li>
+            <li>From meetings to commutes—stay sharp all day.</li>
+          </ul>
+          <div class="home-featured">
+            <div class="home-featured-title">Featured</div>
+            <div class="home-featured-items">
+              <a class="home-chip" href="/product/6">Office Pro Loafers</a>
+              <a class="home-chip" href="/product/21">Daily Office Wear Loafers</a>
+              <a class="home-chip" href="/product/22">Premium Workday Shoes</a>
+            </div>
+          </div>
+
+          <div class="home-cta-row">
+            <a class="home-cta home-cta-primary" href="/catalog.html">Browse catalog</a>
+            <a class="home-cta home-cta-secondary" href="/cart.html">Go to cart</a>
+            <a class="home-cta home-cta-tertiary" href="#slide-2">Next ›</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="slide-2" class="home-slide" style="--cat-text-primary:#ffffff;--cat-text-secondary:#d1cfcfff;font-family:'Comic Sans MS', cursive, sans-serif;background-image: linear-gradient(135deg, #0e3a15c6 0%, #4a403fa9 55%, rgba(0,0,0,0.15) 100%), url('/ShoeCommerce/images/comfyslip.jpeg');">
+        <div class="home-slide-content">
+          <div class="home-kicker">Casual</div>
+          <h1 class="home-slide-title">Everyday comfort, effortless style.</h1>
+          <ul class="home-bullets">
+            <li>Soft cushioning and lightweight builds for daily wear.</li>
+            <li>Your go-to pairs for errands, hangouts, and weekends.</li>
+          </ul>
+          <div class="home-featured">
+            <div class="home-featured-title">Featured</div>
+            <div class="home-featured-items">
+              <a class="home-chip" href="/product/1">Comfort Plush Sneakers</a>
+              <a class="home-chip" href="/product/7">Everyday Flex Sneakers</a>
+              <a class="home-chip" href="/product/8">Street Smart Casuals</a>
+            </div>
+          </div>
+
+          <div class="home-cta-row">
+            <a class="home-cta home-cta-primary" href="/catalog.html">Browse catalog</a>
+            <a class="home-cta home-cta-secondary" href="/cart.html">Go to cart</a>
+            <a class="home-cta home-cta-tertiary" href="#slide-3">Next ›</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="slide-3" class="home-slide" style="--cat-text-primary:#ffffff;--cat-text-secondary:#d1cfcfff;font-family:'Tahoma', Gadget, sans-serif;background-image: linear-gradient(135deg, #02102ec6 0%, #061634a9 55%, rgba(0,0,0,0.15) 100%), url('/ShoeCommerce/images/running.jpeg');">
+        <div class="home-slide-content">
+          <div class="home-kicker">Sports</div>
+          <h1 class="home-slide-title">Performance-first shoes engineered for movement.</h1>
+          <ul class="home-bullets">
+            <li>Breathable uppers, stable support, and responsive cushioning.</li>
+            <li>Train harder, run longer, recover faster.</li>
+          </ul>
+          <div class="home-featured">
+            <div class="home-featured-title">Featured</div>
+            <div class="home-featured-items">
+              <a class="home-chip" href="/product/2">Urban Runner Shoes</a>
+              <a class="home-chip" href="/product/10">Velocity Pro Runners</a>
+              <a class="home-chip" href="/product/9">Power Sprint Trainers</a>
+            </div>
+          </div>
+
+          <div class="home-cta-row">
+            <a class="home-cta home-cta-primary" href="/catalog.html">Browse catalog</a>
+            <a class="home-cta home-cta-secondary" href="/cart.html">Go to cart</a>
+            <a class="home-cta home-cta-tertiary" href="#slide-4">Next ›</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="slide-4" class="home-slide" style="--cat-text-primary:#ffffff;--cat-text-secondary:#d1cfcfff;font-family:'Times New Roman', Times, serif;background-image: linear-gradient(135deg, #1b0e06c6 0%, #3e2c23a9 55%, rgba(0,0,0,0.15) 100%), url('/ShoeCommerce/images/classicleather.jpeg');">
+        <div class="home-slide-content">
+          <div class="home-kicker">Formal</div>
+          <h1 class="home-slide-title">Timeless craftsmanship for elevated occasions.</h1>
+          <ul class="home-bullets">
+            <li>Leather-forward looks with refined detailing.</li>
+            <li>Dress up with confidence—classic never fades.</li>
+          </ul>
+          <div class="home-featured">
+            <div class="home-featured-title">Featured</div>
+            <div class="home-featured-items">
+              <a class="home-chip" href="/product/3">Classic Leather Oxfords</a>
+              <a class="home-chip" href="/product/12">Executive Leather Derbies</a>
+              <a class="home-chip" href="/product/14">Classic Brogue Shoes</a>
+            </div>
+          </div>
+
+          <div class="home-cta-row">
+            <a class="home-cta home-cta-primary" href="/catalog.html">Browse catalog</a>
+            <a class="home-cta home-cta-secondary" href="/cart.html">Go to cart</a>
+            <a class="home-cta home-cta-tertiary" href="#slide-5">Next ›</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="slide-5" class="home-slide" style="--cat-text-primary:#ffffff;--cat-text-secondary:#d1cfcfff;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;background-image: linear-gradient(135deg, #3e220bc6 0%, #754c24a9 55%, rgba(0,0,0,0.15) 100%), url('/ShoeCommerce/images/summerbreeze.jpeg');">
+        <div class="home-slide-content">
+          <div class="home-kicker">Sandals</div>
+          <h1 class="home-slide-title">Breezy comfort for warm-weather days.</h1>
+          <ul class="home-bullets">
+            <li>Light straps, soft footbeds, and easy styling.</li>
+            <li>Perfect for travel, strolls, and sunny weekends.</li>
+          </ul>
+          <div class="home-featured">
+            <div class="home-featured-title">Featured</div>
+            <div class="home-featured-items">
+              <a class="home-chip" href="/product/4">Summer Breeze Sandals</a>
+              <a class="home-chip" href="/product/15">Beach Walk Sandals</a>
+              <a class="home-chip" href="/product/17">Comfort Glide Sandals</a>
+            </div>
+          </div>
+
+          <div class="home-cta-row">
+            <a class="home-cta home-cta-primary" href="/catalog.html">Browse catalog</a>
+            <a class="home-cta home-cta-secondary" href="/cart.html">Go to cart</a>
+            <a class="home-cta home-cta-tertiary" href="#slide-6">Next ›</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="slide-6" class="home-slide" style="--cat-text-primary:#ffffff;--cat-text-secondary:#d1cfcfff;font-family:'Courier New', Courier, monospace;background-image: linear-gradient(135deg, #1e0f0bc6 0%, #4b3832a9 55%, rgba(0,0,0,0.15) 100%), url('/ShoeCommerce/images/mountaintrek.jpeg');">
+        <div class="home-slide-content">
+          <div class="home-kicker">Boots</div>
+          <h1 class="home-slide-title">Rugged builds designed for real terrain.</h1>
+          <ul class="home-bullets">
+            <li>Grip, durability, and protection—without sacrificing comfort.</li>
+            <li>From trails to streets, boots that go anywhere.</li>
+          </ul>
+          <div class="home-featured">
+            <div class="home-featured-title">Featured</div>
+            <div class="home-featured-items">
+              <a class="home-chip" href="/product/5">Mountain Trek Boots</a>
+              <a class="home-chip" href="/product/18">Rugged Trail Boots</a>
+              <a class="home-chip" href="/product/19">Winter Shield Boots</a>
+            </div>
+          </div>
+
+          <div class="home-cta-row">
+            <a class="home-cta home-cta-primary" href="/catalog.html">Browse catalog</a>
+            <a class="home-cta home-cta-secondary" href="/cart.html">Go to cart</a>
+            <a class="home-cta home-cta-tertiary" href="#slide-1">Back to start</a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</body>
+</html>
