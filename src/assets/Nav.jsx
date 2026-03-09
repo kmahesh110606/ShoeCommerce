@@ -6,10 +6,12 @@ import {
   PiShoppingBag, PiShoppingBagFill,
   PiHouse, PiHouseFill,
 } from 'react-icons/pi';
+import { useCart } from '../utils/CartContext.jsx';
 
 function Nav({ themeStyle, className }) {
   const { pathname } = useLocation();
   const [scrolled, setScrolled] = useState(false);
+  const { cartCount } = useCart();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -44,7 +46,10 @@ function Nav({ themeStyle, className }) {
           <span className="nav-link-text">Catalog</span>
         </Link>
         <Link to="/cart" className={`nav-link${isCart ? ' nav-link-active' : ''}`}>
-          {isCart ? <PiShoppingBagFill size={18} /> : <PiShoppingBag size={18} />}
+          <span className="nav-cart-icon-wrap">
+            {isCart ? <PiShoppingBagFill size={18} /> : <PiShoppingBag size={18} />}
+            {cartCount > 0 && <span className="cart-badge">{cartCount > 99 ? '99+' : cartCount}</span>}
+          </span>
           <span className="nav-link-text">Cart</span>
         </Link>
       </div>

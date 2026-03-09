@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { PiCaretLeft, PiCaretRight, PiShoppingBag, PiArrowRight, PiSquaresFour } from 'react-icons/pi';
+import { PiCaretLeft, PiCaretRight, PiSquaresFour } from 'react-icons/pi';
 import Nav from '../assets/Nav.jsx';
 import { categories, products } from '../../data.js';
 import { themeToCssVars } from '../utils/categoryTheme.js';
@@ -13,8 +13,9 @@ export default function Home() {
   const containerRef = useRef(null);
   const slideRefs = useRef([]);
 
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(-1);
   const activeIndexRef = useRef(0);
+  const mounted = useRef(false);
 
   const safeCategories = useMemo(() => {
     return Array.isArray(categories) ? categories : [];
@@ -44,6 +45,13 @@ export default function Home() {
     const el = slideRefs.current[idx];
     if (el) el.scrollIntoView({ behavior, inline: 'start', block: 'nearest' });
   };
+
+  useEffect(() => {
+    if (!mounted.current) {
+      mounted.current = true;
+      requestAnimationFrame(() => setActiveIndex(0));
+    }
+  }, []);
 
   useEffect(() => {
     activeIndexRef.current = activeIndex;
@@ -116,10 +124,16 @@ export default function Home() {
         <div className="home-carousel" ref={containerRef}>
           {renderedCategories.map((cat, renderIdx) => {
           const realIdx = renderIdx;
+          const isActive = activeIndex === realIdx;
           const featuredNames = Array.isArray(cat['featured-products']) ? cat['featured-products'] : [];
           const featuredProducts = featuredNames
             .map((name) => ({ name, product: findProductByName(name) }))
             .filter((x) => Boolean(x.name));
+
+          const heroProducts = featuredProducts
+            .filter((f) => f.product)
+            .slice(0, 2)
+            .map((f) => f.product);
 
           const primary = cat['primary-color'];
           const secondary = cat['secondary-color'];
@@ -132,22 +146,37 @@ export default function Home() {
           return (
             <section
               key={`${cat.name}-${renderIdx}`}
-              className="home-slide"
+              className={`home-slide${isActive ? ' slide-active' : ''}`}
               data-real-index={realIdx}
               ref={(el) => {
                 slideRefs.current[renderIdx] = el;
               }}
               style={{ backgroundImage: slideBg }}
             >
-              <div className="home-slide-content">
-                <div className="home-kicker">{cat.name}</div>
-                <h1 className="home-slide-title">{cat.description1}</h1>
-                <ul className="home-bullets">
-                  <li>{cat.description2}</li>
-                  <li>{cat.description3}</li>
-                </ul>
+              {heroProducts[0] && (
+                <div className="home-slide-hero hero-from-left">
+                  <img src={heroProducts[0].image} alt={heroProducts[0].name} className="home-hero-img" />
+                  <div className="home-hero-tag">{heroProducts[0].name}</div>
+                </div>
+              )}
 
-                <div className="home-featured">
+              {heroProducts[1] && (
+                <div className="home-slide-hero hero-from-right">
+                  <img src={heroProducts[1].image} alt={heroProducts[1].name} className="home-hero-img" />
+                  <div className="home-hero-tag">{heroProducts[1].name}</div>
+                </div>
+              )}
+
+              <div className="home-slide-content">
+                <div className="home-kicker slide-el slide-el-1">{cat.name}</div>
+                <h1 className="home-slide-title slide-el slide-el-2">{cat.description1}</h1>
+
+                <div className="home-pills slide-el slide-el-3">
+                  <span className="home-pill">{cat.description2}</span>
+                  <span className="home-pill">{cat.description3}</span>
+                </div>
+
+                <div className="home-featured slide-el slide-el-4">
                   <div className="home-featured-title">Featured</div>
                   <div className="home-featured-items">
                     {featuredProducts.map(({ name, product }) =>
@@ -164,27 +193,10 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="home-cta-row">
+                <div className="home-cta-row slide-el slide-el-5">
                   <Link className="home-cta home-cta-primary" to="/catalog">
                     <PiSquaresFour size={16} /> Browse catalog
                   </Link>
-                  <Link className="home-cta home-cta-secondary" to="/cart">
-                    <PiShoppingBag size={16} /> Go to cart
-                  </Link>
-                  <button
-                    type="button"
-                    className="home-cta home-cta-tertiary"
-                    onClick={() => {
-                      if (safeCategories.length <= 1) return;
-                      const current = activeIndexRef.current;
-                      if (current < safeCategories.length - 1) {
-                        scrollToRenderIndex(current + 1);
-                      }
-                    }}
-                    disabled={activeIndex >= safeCategories.length - 1}
-                  >
-                    Next <PiArrowRight size={14} />
-                  </button>
                 </div>
               </div>
             </section>

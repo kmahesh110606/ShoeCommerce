@@ -3,6 +3,7 @@ import { PiArrowLeft, PiMinus, PiPlus, PiTrash, PiShieldCheck, PiShoppingBag, Pi
 import Nav from '../assets/Nav.jsx';
 import DotGrid from '../assets/DotGrid.jsx';
 import { products } from '../../data.js';
+import { useCart } from '../utils/CartContext.jsx';
 
 function formatRupees(amount) {
   try {
@@ -16,26 +17,18 @@ function formatRupees(amount) {
   }
 }
 
-function IncreaseButton(id) {
-  document.getElementById('qty-' + id).innerText = parseInt(document.getElementById('qty-' + id).innerText) + 1;
-}
-
-function DecreaseButton(id) {
-  const qtyElement = document.getElementById('qty-' + id);
-  const currentQty = parseInt(qtyElement.innerText);
-  if (currentQty > 1) {
-    qtyElement.innerText = currentQty - 1;
-  }
-}
-
 export default function Cart() {
-  const cartItems = [
-    { product: products.find((p) => p.id === 1), qty: 1 },
-    { product: products.find((p) => p.id === 2), qty: 2 },
-  ].filter((x) => Boolean(x.product));
+  const { cartItems, updateQty, removeFromCart } = useCart();
 
-  const subtotal = cartItems.reduce((sum, item) => sum + item.product.price * item.qty, 0);
-  const delivery = cartItems.length ? 99 : 0;
+  const resolved = cartItems
+    .map((item) => {
+      const product = products.find((p) => p.id === item.productId);
+      return product ? { product, qty: item.qty } : null;
+    })
+    .filter(Boolean);
+
+  const subtotal = resolved.reduce((sum, item) => sum + item.product.price * item.qty, 0);
+  const delivery = resolved.length ? 99 : 0;
   const total = subtotal + delivery;
 
   const recommendations = products.slice(6, 9);
@@ -70,10 +63,10 @@ export default function Cart() {
           <section className="ui-panel cart-panel">
             <div className="cart-panel-head">
               <h2 className="cart-panel-title">Items</h2>
-              <span className="cart-muted">{cartItems.length} items</span>
+              <span className="cart-muted">{resolved.length} items</span>
             </div>
 
-            {cartItems.length === 0 ? (
+            {resolved.length === 0 ? (
               <div className="cart-empty">
                 <p>Your cart is empty.</p>
                 <Link className="btn btn-primary" to="/catalog">
@@ -82,7 +75,7 @@ export default function Cart() {
               </div>
             ) : (
               <div className="cart-list">
-                {cartItems.map(({ product, qty }) => (
+                {resolved.map(({ product, qty }) => (
                   <article
                     key={product.id}
                     className="cart-row"
@@ -100,16 +93,16 @@ export default function Cart() {
 
                       <div className="cart-row-bottom">
                         <div className="cart-qty">
-                          <button type="button" className="qty-btn" onClick={() => DecreaseButton(product.id)}>
+                          <button type="button" className="qty-btn" onClick={() => updateQty(product.id, qty - 1)} disabled={qty <= 1}>
                             <PiMinus size={14} />
                           </button>
-                          <span className="qty-pill" id={'qty-' + product.id}>{qty}</span>
-                          <button type="button" className="qty-btn" onClick={() => IncreaseButton(product.id)}>
+                          <span className="qty-pill">{qty}</span>
+                          <button type="button" className="qty-btn" onClick={() => updateQty(product.id, qty + 1)}>
                             <PiPlus size={14} />
                           </button>
                         </div>
 
-                        <button type="button" className="btn btn-ghost">
+                        <button type="button" className="btn btn-ghost" onClick={() => removeFromCart(product.id)}>
                           <PiTrash size={14} /> Remove
                         </button>
                       </div>

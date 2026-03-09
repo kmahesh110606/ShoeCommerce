@@ -216,11 +216,11 @@ button:focus-visible {
 /* ========= UI Primitives ========= */
 
 .ui-panel {
-  background: rgba(0, 0, 0, 0.55);
-  border: 1px solid rgba(255, 255, 255, 0);
+  background: rgba(0, 0, 0, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(4px);
 }
 
 /* ========= Navbar ========= */
@@ -270,9 +270,9 @@ button:focus-visible {
   text-decoration: none;
   color: #ffffff;
   font-weight: 900;
-  letter-spacing: 0.3px;
+  letter-spacing: 1.6px;
   font-family: 'Inter', system-ui, Arial;
-  font-size: 1.05rem;
+  font-size: 1.6rem;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -286,8 +286,8 @@ button:focus-visible {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.12);
   border: 1px solid rgba(255, 255, 255, 0.14);
@@ -297,14 +297,14 @@ button:focus-visible {
 .nav-link {
   text-decoration: none;
   color: var(--nav-link-muted, rgba(255, 255, 255, 0.72));
-  font-weight: 600;
+  font-weight: 700;
   padding: 8px 14px;
   border-radius: 10px;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   transition: background-color 0.25s ease, color 0.2s ease, transform 0.3s cubic-bezier(.25,.8,.25,1), backdrop-filter 0.25s ease;
-  font-size: 0.9rem;
+  font-size: 1.0rem;
 }
 
 .nav-link:visited {
@@ -313,15 +313,40 @@ button:focus-visible {
 
 .nav-link:hover {
   background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(6px);
   color: #ffffff;
-  transform: scale(1.06);
+  transform: scale(1.2);
 }
 
 .nav-link-active {
   color: #ffffff;
-  background: rgba(255, 255, 255, 0.10);
-  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(6px);
+  font-weight: 900;
+}
+
+.nav-cart-icon-wrap {
+  position: relative;
+  display: inline-flex;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -7px;
+  right: -9px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 10px;
+  background: #10b981;
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  pointer-events: none;
 }
 
 .cart-link:visited {
@@ -382,16 +407,139 @@ button:focus-visible {
   border: 1px solid rgba(255, 255, 255, 0.06);
   margin-right: 16px;
   backdrop-filter: blur(1px);
+  overflow: hidden;
 }
 
 .home-slide-content {
-  position: relative;
-  z-index: 1;
-  padding: 130px 28px 54px;
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   color: var(--cat-text-primary, #fff);
-  max-width: 720px;
-  text-align: left;
+  max-width: 520px;
+  width: 90%;
+  text-align: center;
   font-family: var(--cat-font-family, 'Inter', system-ui, Arial);
+}
+
+/* ---- Slide element stagger animations ---- */
+
+.slide-el {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.55s cubic-bezier(.25,.8,.25,1), transform 0.55s cubic-bezier(.25,.8,.25,1);
+}
+
+.slide-active .slide-el {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.slide-active .slide-el-1 { transition-delay: 0.05s; }
+.slide-active .slide-el-2 { transition-delay: 0.15s; }
+.slide-active .slide-el-3 { transition-delay: 0.28s; }
+.slide-active .slide-el-4 { transition-delay: 0.40s; }
+.slide-active .slide-el-5 { transition-delay: 0.52s; }
+
+/* ---- Hero shoe images ---- */
+
+.home-slide-hero {
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  opacity: 0;
+  transition: opacity 0.7s cubic-bezier(.25,.8,.25,1.1), transform 0.75s cubic-bezier(.25,.8,.25,1.1);
+}
+
+.hero-from-left {
+  left: -4%;
+  bottom: 4%;
+  transform: translateX(-200px) scale(0.5) rotate(15deg);
+  transition-delay: 0.1s;
+}
+
+.hero-from-right {
+  right: -4%;
+  top: 8%;
+  transform: translateX(200px) scale(0.5) rotate(-15deg);
+  transition-delay: 0.3s;
+}
+
+.slide-active .hero-from-left {
+  opacity: 1;
+  transform: translateX(0) scale(1) rotate(-8deg);
+}
+
+.slide-active .hero-from-right {
+  opacity: 1;
+  transform: translateX(0) scale(1) rotate(8deg);
+}
+
+.home-hero-img {
+  width: min(62vh, 52vw);
+  height: min(62vh, 52vw);
+  object-fit: contain;
+  filter: drop-shadow(0 24px 60px rgba(0, 0, 0, 0.5));
+  animation: heroFloat 5s ease-in-out infinite;
+  animation-play-state: paused;
+}
+
+.slide-active .home-hero-img {
+  animation-play-state: running;
+}
+
+.hero-from-right .home-hero-img {
+  animation-name: heroFloatAlt;
+}
+
+@keyframes heroFloat {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50%      { transform: translateY(-18px) rotate(2deg); }
+}
+
+@keyframes heroFloatAlt {
+  0%, 100% { transform: translateY(0) rotate(2deg); }
+  50%      { transform: translateY(14px) rotate(-2deg); }
+}
+
+.home-hero-tag {
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.82rem;
+  white-space: nowrap;
+  letter-spacing: 0.3px;
+}
+
+/* ---- Description pills ---- */
+
+.home-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 18px;
+  justify-content: center;
+}
+
+.home-pill {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  color: var(--cat-text-secondary, rgba(255, 255, 255, 0.88));
+  font-size: 0.88rem;
+  font-weight: 600;
+  line-height: 1.4;
+  backdrop-filter: blur(6px);
 }
 
 .home-kicker {
@@ -414,13 +562,6 @@ button:focus-visible {
   line-height: 1.15;
 }
 
-.home-bullets {
-  margin: 0 0 18px;
-  padding-left: 20px;
-  color: var(--cat-text-secondary, rgba(255, 255, 255, 0.85));
-  line-height: 1.7;
-}
-
 .home-featured {
   margin: 16px 0 20px;
 }
@@ -438,6 +579,7 @@ button:focus-visible {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .home-chip {
@@ -467,6 +609,7 @@ button:focus-visible {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .home-cta {
@@ -557,18 +700,43 @@ button:focus-visible {
     min-width: 96vw;
   }
 
-  .home-slide-title {
-    font-size: 1.65rem;
+  .home-slide-content {
+    top: 55%;
+    max-width: 92%;
   }
 
-  .home-slide-content {
-    padding-top: 110px;
+  .home-slide-title {
+    font-size: 1.5rem;
+  }
+
+  .home-hero-img {
+    width: min(38vh, 42vw);
+    height: min(38vh, 42vw);
+  }
+
+  .hero-from-left {
+    left: -6%;
+    bottom: 2%;
+  }
+
+  .hero-from-right {
+    right: -6%;
+    top: 4%;
   }
 
   .home-arrow {
     width: 48px;
     height: 48px;
     font-size: 20px;
+  }
+
+  .home-pills {
+    gap: 8px;
+  }
+
+  .home-pill {
+    padding: 8px 14px;
+    font-size: 0.82rem;
   }
 }
 
@@ -1361,6 +1529,12 @@ button:focus-visible {
   display: inline-flex;
 }
 
+.qr-center {
+  display: flex;
+  justify-content: center;
+  margin: 8px 0;
+}
+
 .qr-img {
   width: 180px;
   height: 180px;
@@ -1431,6 +1605,71 @@ button:focus-visible {
 .hint-title {
   font-weight: 800;
   margin-bottom: 4px;
+}
+
+/* ========= Payment Animation ========= */
+
+.payment-anim-container {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 40px 24px;
+}
+
+.payment-anim-card {
+  text-align: center;
+  padding: 48px 40px;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  max-width: 420px;
+  width: 100%;
+  animation: paymentFadeIn 0.5s ease;
+}
+
+.payment-anim-title {
+  font-size: 1.5rem;
+  font-weight: 900;
+  margin: 16px 0 8px;
+  color: #fff;
+}
+
+.payment-spinner {
+  animation: spinRotate 1s linear infinite;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.payment-success-card .payment-success-icon {
+  color: #10b981;
+  animation: successPop 0.6s cubic-bezier(.25,.8,.25,1.2);
+}
+
+.payment-success-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+@keyframes paymentFadeIn {
+  from { opacity: 0; transform: translateY(20px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes spinRotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes successPop {
+  0%   { transform: scale(0); opacity: 0; }
+  60%  { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
 }
 
 .row {

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { PiEye, PiShoppingBag, PiStar, PiStarFill } from 'react-icons/pi';
-import { getCategoryTheme } from '../utils/categoryTheme';
+import { useCart } from '../utils/CartContext.jsx';
 
 function StarRating({ rating }) {
   return (
@@ -13,11 +13,10 @@ function StarRating({ rating }) {
 }
 
 function Card({ id, name, price, rating, image, category }) {
-  const theme = getCategoryTheme(category);
-  const cardStyle = {};
+  const { addToCart } = useCart();
 
   return (
-    <div className="card" style={cardStyle}>
+    <div className="card">
       <div className="product-image">
         <img src={image} alt={name} />
       </div>
@@ -31,9 +30,9 @@ function Card({ id, name, price, rating, image, category }) {
           <Link className="cta" to={`/product/${id}`}>
             <PiEye size={16} /> View
           </Link>
-          <a className="cta cta-secondary" href="#">
+          <button type="button" className="cta cta-secondary" onClick={() => addToCart(id)}>
             <PiShoppingBag size={16} /> Add to cart
-          </a>
+          </button>
         </div>
       </div>
     </div>

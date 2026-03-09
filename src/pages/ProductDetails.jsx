@@ -1,9 +1,10 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { PiArrowLeft, PiShoppingBag, PiCreditCard, PiStar, PiStarFill } from 'react-icons/pi';
 import Nav from '../assets/Nav.jsx';
 import DotGrid from '../assets/DotGrid.jsx';
 import { products } from '../../data.js';
 import { getCategoryTheme, themeToCssVars } from '../utils/categoryTheme.js';
+import { useCart } from '../utils/CartContext.jsx';
 
 function formatRupees(amount) {
   try {
@@ -19,6 +20,8 @@ function formatRupees(amount) {
 
 export default function ProductDetails() {
   const { productId } = useParams();
+  const navigate = useNavigate();
+  const { addToCart } = useCart();
   const product = products.find((p) => String(p.id) === String(productId));
 
   if (!product) {
@@ -121,12 +124,12 @@ export default function ProductDetails() {
               <p className="product-description">{product.description}</p>
 
               <div className="product-actions">
-                <button type="button" className="product-btn product-btn-primary">
+                <button type="button" className="product-btn product-btn-primary" onClick={() => addToCart(product.id)}>
                   <PiShoppingBag size={18} /> Add to cart
                 </button>
-                <Link className="product-btn product-btn-secondary" to="/payment">
+                <button type="button" className="product-btn product-btn-secondary" onClick={() => { addToCart(product.id); navigate('/payment'); }}>
                   <PiCreditCard size={18} /> Buy now
-                </Link>
+                </button>
               </div>
             </div>
           </div>

@@ -1,9 +1,11 @@
 import { useMemo, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { PiArrowLeft, PiQrCode, PiCreditCard, PiTruck, PiCheckCircle, PiBookmarkSimple, PiLightbulb } from 'react-icons/pi';
+import { Link, useNavigate } from 'react-router-dom';
+import { PiArrowLeft, PiQrCode, PiCreditCard, PiTruck, PiCheckCircle, PiBookmarkSimple, PiLightbulb, PiSpinnerGap } from 'react-icons/pi';
+import { QRCodeSVG } from 'qrcode.react';
 import Nav from '../assets/Nav.jsx';
 import DotGrid from '../assets/DotGrid.jsx';
 import { products } from '../../data.js';
+import { useCart } from '../utils/CartContext.jsx';
 
 function formatRupees(amount) {
     try {
@@ -19,19 +21,71 @@ function formatRupees(amount) {
 
 function PaymentGateway() {
     const [method, setMethod] = useState('upi');
+    const [paymentState, setPaymentState] = useState('idle');
+    const navigate = useNavigate();
+    const { cartItems, placeOrder } = useCart();
 
     const cartPreview = useMemo(() => {
-        const p1 = products.find((p) => p.id === 1);
-        const p2 = products.find((p) => p.id === 2);
-        const items = [
-            p1 ? { product: p1, qty: 1 } : null,
-            p2 ? { product: p2, qty: 2 } : null,
-        ].filter(Boolean);
+        const items = cartItems
+            .map((ci) => {
+                const product = products.find((p) => p.id === ci.productId);
+                return product ? { product, qty: ci.qty } : null;
+            })
+            .filter(Boolean);
 
         const subtotal = items.reduce((sum, item) => sum + item.product.price * item.qty, 0);
         const delivery = items.length ? 99 : 0;
         return { items, subtotal, delivery, total: subtotal + delivery };
-    }, []);
+    }, [cartItems]);
+
+    const upiUri = `upi://pay?pa=shoecommerce@upi&pn=ShoeCommerce&am=${cartPreview.total}&cu=INR`;
+
+    function handleConfirm() {
+        if (cartPreview.items.length === 0 || paymentState !== 'idle') return;
+        setPaymentState('processing');
+        setTimeout(() => {
+            placeOrder(method, cartPreview.items, cartPreview.total);
+            setPaymentState('success');
+        }, 2500);
+    }
+
+    if (paymentState === 'processing') {
+        return (
+            <div className="payment-page">
+                <DotGrid dotSize={5} gap={13} baseColor="#121212" activeColor="#939296" proximity={120} shockRadius={250} shockStrength={5} resistance={750} returnDuration={1.5} />
+                <Nav className="navbar-overlay" />
+                <div className="payment-anim-container">
+                    <div className="payment-anim-card">
+                        <PiSpinnerGap size={48} className="payment-spinner" />
+                        <h2 className="payment-anim-title">Processing payment...</h2>
+                        <p className="muted">Please wait while we confirm your {method.toUpperCase()} payment.</p>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
+    if (paymentState === 'success') {
+        return (
+            <div className="payment-page">
+                <DotGrid dotSize={5} gap={13} baseColor="#121212" activeColor="#939296" proximity={120} shockRadius={250} shockStrength={5} resistance={750} returnDuration={1.5} />
+                <Nav className="navbar-overlay" />
+                <div className="payment-anim-container">
+                    <div className="payment-anim-card payment-success-card">
+                        <div className="payment-success-icon">
+                            <PiCheckCircle size={64} />
+                        </div>
+                        <h2 className="payment-anim-title">Payment Successful!</h2>
+                        <p className="muted">Your order has been placed. Thank you for shopping with us!</p>
+                        <div className="payment-success-actions">
+                            <Link className="btn btn-confirm" to="/catalog">Continue shopping</Link>
+                            <Link className="btn btn-ghost" to="/">Go home</Link>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="payment-page">
@@ -89,8 +143,10 @@ function PaymentGateway() {
                             <div className="payment-section">
                                 <h2 className="section-title">Pay via QR</h2>
                                 <p className="muted">Scan with any UPI app.</p>
-                                <div className="qr-frame">
-                                    <img src="images/qr.jpeg" alt="QR Code" className="qr-img" />
+                                <div className="qr-center">
+                                    <div className="qr-frame">
+                                        <QRCodeSVG value={upiUri} size={164} bgColor="#ffffff" fgColor="#000000" level="M" />
+                                    </div>
                                 </div>
                                 <div className="field">
                                     <label className="label">UPI ID (optional)</label>
@@ -134,7 +190,7 @@ function PaymentGateway() {
                         ) : null}
 
                         <div className="payment-actions">
-                            <button type="button" className="btn btn-confirm">
+                            <button type="button" className="btn btn-confirm" onClick={handleConfirm} disabled={cartPreview.items.length === 0}>
                                 <PiCheckCircle size={16} /> Confirm payment
                             </button>
                             <button type="button" className="btn btn-ghost">
