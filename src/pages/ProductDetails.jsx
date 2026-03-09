@@ -1,6 +1,7 @@
 import { Link, useParams } from 'react-router-dom';
+import { PiArrowLeft, PiShoppingBag, PiCreditCard, PiStar, PiStarFill } from 'react-icons/pi';
 import Nav from '../assets/Nav.jsx';
-import '../styles/styles.css';
+import DotGrid from '../assets/DotGrid.jsx';
 import { products } from '../../data.js';
 import { getCategoryTheme, themeToCssVars } from '../utils/categoryTheme.js';
 
@@ -30,7 +31,7 @@ export default function ProductDetails() {
             <h1 className="product-title">Product not found</h1>
             <p className="product-subtitle">We couldn’t find that product.</p>
             <Link className="product-link" to="/catalog">
-              Back to catalog
+              <PiArrowLeft size={16} /> Back to catalog
             </Link>
           </div>
           </div>
@@ -59,6 +60,17 @@ export default function ProductDetails() {
     <>
       <Nav className="navbar-overlay" themeStyle={navThemeStyle} />
       <div className="product-details-page" style={{ ...themeVars, fontFamily: 'var(--cat-font-family)' }}>
+        <DotGrid
+          dotSize={5}
+          gap={13}
+          baseColor="#121212"
+          activeColor="#939296"
+          proximity={120}
+          shockRadius={250}
+          shockStrength={5}
+          resistance={750}
+          returnDuration={1.5}
+        />
         <div
           className="product-details-shell"
           style={{
@@ -68,7 +80,7 @@ export default function ProductDetails() {
           <div className="product-details-card">
           <div className="product-topbar">
             <Link className="product-link" to="/catalog">
-              ← Catalog
+              <PiArrowLeft size={16} /> Catalog
             </Link>
             <span className="product-badge">{product.category}</span>
           </div>
@@ -85,10 +97,17 @@ export default function ProductDetails() {
 
             <div className="product-info">
               <h1 className="product-title">{product.name}</h1>
-              <p className="product-subtitle">Rating: {product.rating} / 5</p>
+              <p className="product-subtitle">
+                {[1, 2, 3, 4, 5].map((i) =>
+                  i <= product.rating
+                    ? <PiStarFill key={i} size={16} color="#fbbf24" />
+                    : <PiStar key={i} size={16} color="#fbbf24" />
+                )}{' '}
+                {product.rating} / 5
+              </p>
 
               <div className="product-pricing">
-                <div className="product-price">{formatRupees(discountedPrice)}</div>
+                <div className="product-price-lg">{formatRupees(discountedPrice)}</div>
                 {typeof product.discount === 'number' && product.discount > 0 ? (
                   <div className="product-price-meta">
                     <span className="product-strike">{formatRupees(product.price)}</span>
@@ -103,10 +122,10 @@ export default function ProductDetails() {
 
               <div className="product-actions">
                 <button type="button" className="product-btn product-btn-primary">
-                  Add to cart
+                  <PiShoppingBag size={18} /> Add to cart
                 </button>
                 <Link className="product-btn product-btn-secondary" to="/payment">
-                  Buy now
+                  <PiCreditCard size={18} /> Buy now
                 </Link>
               </div>
             </div>

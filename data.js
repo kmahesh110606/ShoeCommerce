@@ -304,8 +304,8 @@ export const products = [
 export const categories = [
     {
         name: "Office",
-        "primary-color": "#242222a9",
-        "secondary-color": "#0a0707c6",
+        "primary-color": "#151414d8",
+        "secondary-color": "#0a0707e6",
         "text-color-primary": "#ffffff",
         "text-color-secondary": "#d1cfcfff",
         "font-family": "'Lucida Handwriting', cursive, sans-serif",
@@ -321,8 +321,8 @@ export const categories = [
     },
     {
         name: "Casual",
-        "primary-color": "#4a403fa9",
-        "secondary-color": "#0e3a15c6",
+        "primary-color": "#292323d8",
+        "secondary-color": "#07240ce6",
         "text-color-primary": "#ffffff",
         "text-color-secondary": "#d1cfcfff",  
         "font-family": "'Comic Sans MS', cursive, sans-serif",
@@ -339,8 +339,8 @@ export const categories = [
     },
     {
         name: "Sports",
-        "primary-color": "#061634a9",
-        "secondary-color": "#02102ec6",
+        "primary-color": "#020f29d8",
+        "secondary-color": "#02102ee6",
         "text-color-primary": "#ffffff",
         "text-color-secondary": "#d1cfcfff",
         "font-family": "'Tahoma', Gadget, sans-serif",
@@ -356,8 +356,8 @@ export const categories = [
     },
     {
         name: "Formal",
-        "primary-color": "#3e2c23a9",
-        "secondary-color": "#1b0e06c6",
+        "primary-color": "#2e211bd8",
+        "secondary-color": "#1b0e06e6",
         "text-color-primary": "#ffffff",
         "text-color-secondary": "#d1cfcfff",
         "font-family": "'Times New Roman', Times, serif",
@@ -373,8 +373,8 @@ export const categories = [
     },
     {
         name: "Sandals",
-        "primary-color": "#754c24a9",
-        "secondary-color": "#3e220bc6",
+        "primary-color": "#4f2c08d8",
+        "secondary-color": "#361a04e6",
         "text-color-primary": "#ffffff",
         "text-color-secondary": "#d1cfcfff",
         "font-family": "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
@@ -390,8 +390,8 @@ export const categories = [
     },
     {
         name: "Boots",
-        "primary-color": "#4b3832a9",
-        "secondary-color": "#1e0f0bc6",
+        "primary-color": "#322521d8",
+        "secondary-color": "#1e0f0be6",
         "text-color-primary": "#ffffff",
         "text-color-secondary": "#d1cfcfff",
         "font-family": "'Courier New', Courier, monospace",

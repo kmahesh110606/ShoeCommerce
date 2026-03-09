@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { PiCaretLeft, PiCaretRight, PiShoppingBag, PiArrowRight, PiSquaresFour } from 'react-icons/pi';
 import Nav from '../assets/Nav.jsx';
-import '../styles/styles.css';
 import { categories, products } from '../../data.js';
 import { themeToCssVars } from '../utils/categoryTheme.js';
 
@@ -49,9 +49,6 @@ export default function Home() {
     activeIndexRef.current = activeIndex;
   }, [activeIndex]);
 
-  // Note: automatic carousel autoscroll removed; navigation now only via controls or user scroll.
-
-
   useEffect(() => {
     const root = containerRef.current;
     if (!root) return;
@@ -79,8 +76,6 @@ export default function Home() {
 
     return () => observer.disconnect();
   }, [renderedCategories.length, safeCategories.length]);
-
-  // No looping behavior; start at first slide and let scroll-snap clamp naturally.
 
 
   return (
@@ -115,7 +110,7 @@ export default function Home() {
           disabled={activeIndex <= 0}
           aria-label="Previous category"
         >
-          ‹
+          <PiCaretLeft size={28} />
         </button>
 
         <div className="home-carousel" ref={containerRef}>
@@ -171,10 +166,10 @@ export default function Home() {
 
                 <div className="home-cta-row">
                   <Link className="home-cta home-cta-primary" to="/catalog">
-                    Browse catalog
+                    <PiSquaresFour size={16} /> Browse catalog
                   </Link>
                   <Link className="home-cta home-cta-secondary" to="/cart">
-                    Go to cart
+                    <PiShoppingBag size={16} /> Go to cart
                   </Link>
                   <button
                     type="button"
@@ -188,7 +183,7 @@ export default function Home() {
                     }}
                     disabled={activeIndex >= safeCategories.length - 1}
                   >
-                    Next ›
+                    Next <PiArrowRight size={14} />
                   </button>
                 </div>
               </div>
@@ -210,7 +205,7 @@ export default function Home() {
           disabled={activeIndex >= safeCategories.length - 1}
           aria-label="Next category"
         >
-          ›
+          <PiCaretRight size={28} />
         </button>
       </div>
     </div>

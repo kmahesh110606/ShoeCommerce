@@ -1,7 +1,8 @@
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/styles.css';
+import { PiArrowLeft, PiQrCode, PiCreditCard, PiTruck, PiCheckCircle, PiBookmarkSimple, PiLightbulb } from 'react-icons/pi';
 import Nav from '../assets/Nav.jsx';
+import DotGrid from '../assets/DotGrid.jsx';
 import { products } from '../../data.js';
 
 function formatRupees(amount) {
@@ -34,6 +35,17 @@ function PaymentGateway() {
 
     return (
         <div className="payment-page">
+            <DotGrid
+                dotSize={5}
+                gap={13}
+                baseColor="#121212"
+                activeColor="#939296"
+                proximity={120}
+                shockRadius={250}
+                shockStrength={5}
+                resistance={750}
+                returnDuration={1.5}
+            />
             <Nav className="navbar-overlay" />
 
             <div className="payment-shell">
@@ -43,7 +55,7 @@ function PaymentGateway() {
                         <p className="payment-subtitle">Choose a method and confirm in seconds.</p>
                     </div>
                     <Link className="cart-link" to="/cart">
-                        ← Back to cart
+                        <PiArrowLeft size={16} /> Back to cart
                     </Link>
                 </header>
 
@@ -55,21 +67,21 @@ function PaymentGateway() {
                                 className={method === 'upi' ? 'tab tab-active' : 'tab'}
                                 onClick={() => setMethod('upi')}
                             >
-                                UPI / QR
+                                <PiQrCode size={16} /> UPI / QR
                             </button>
                             <button
                                 type="button"
                                 className={method === 'card' ? 'tab tab-active' : 'tab'}
                                 onClick={() => setMethod('card')}
                             >
-                                Card
+                                <PiCreditCard size={16} /> Card
                             </button>
                             <button
                                 type="button"
                                 className={method === 'cod' ? 'tab tab-active' : 'tab'}
                                 onClick={() => setMethod('cod')}
                             >
-                                COD
+                                <PiTruck size={16} /> COD
                             </button>
                         </div>
 
@@ -122,11 +134,11 @@ function PaymentGateway() {
                         ) : null}
 
                         <div className="payment-actions">
-                            <button type="button" className="btn btn-primary">
-                                Confirm payment
+                            <button type="button" className="btn btn-confirm">
+                                <PiCheckCircle size={16} /> Confirm payment
                             </button>
                             <button type="button" className="btn btn-ghost">
-                                Save for later
+                                <PiBookmarkSimple size={16} /> Save for later
                             </button>
                         </div>
                     </section>
@@ -152,8 +164,11 @@ function PaymentGateway() {
                         </div>
 
                         <div className="payment-hint">
-                            <div className="hint-title">Tip</div>
-                            <div className="muted">Use UPI/QR for the fastest checkout.</div>
+                            <PiLightbulb size={20} className="payment-hint-icon" />
+                            <div>
+                                <div className="hint-title">Tip</div>
+                                <div className="muted">Use UPI/QR for the fastest checkout.</div>
+                            </div>
                         </div>
                     </aside>
                 </div>
