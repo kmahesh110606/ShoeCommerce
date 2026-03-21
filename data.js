@@ -298,8 +298,208 @@ export const products = [
         discount: 15,
         category: "Office",
         description: "All-day comfort shoes tailored for office professionals."
+    },
+    {
+        id: 31,
+        name: "Weekend Canvas Slip-Ons",
+        price: 2199,
+        rating: 4,
+        image: "images/31.png",
+        discount: 10,
+        category: "Casual",
+        description: "Easygoing canvas slip-ons perfect for lazy weekend afternoons."
+    },
+    {
+        id: 32,
+        name: "Aero Bounce Running Shoes",
+        price: 4599,
+        rating: 5,
+        image: "images/32.png",
+        discount: 20,
+        category: "Sports",
+        description: "Experience zero gravity with our aero bounce running shoes."
+    },
+    {
+        id: 33,
+        name: "Midnight Patent Oxfords",
+        price: 5999,
+        rating: 5,
+        image: "images/33.png",
+        discount: 15,
+        category: "Formal",
+        description: "High-gloss patent oxfords designed for black-tie events."
+    },
+    {
+        id: 34,
+        name: "River Cross Trekking Sandals",
+        price: 2699,
+        rating: 4,
+        image: "images/34.png",
+        discount: 12,
+        category: "Sandals",
+        description: "Water-resistant sandals with enhanced grip for outdoor activities."
+    },
+    {
+        id: 35,
+        name: "Desert Suede Chukka Boots",
+        price: 4899,
+        rating: 4,
+        image: "images/35.png",
+        discount: 18,
+        category: "Boots",
+        description: "Classic suede chukkas that blend ruggedness with casual style."
+    },
+    {
+        id: 36,
+        name: "Corporate Polish Derbies",
+        price: 3499,
+        rating: 4,
+        image: "images/36.png",
+        discount: 15,
+        category: "Office",
+        description: "Professional derbies that command respect in the boardroom."
+    },
+    {
+        id: 37,
+        name: "Retro High-Top Sneakers",
+        price: 3299,
+        rating: 5,
+        image: "images/37.png",
+        discount: 10,
+        category: "Casual",
+        description: "Bring back the 90s with these stylish retro high-top sneakers."
+    },
+    {
+        id: 38,
+        name: "Endurance Trail Runners",
+        price: 4899,
+        rating: 5,
+        image: "images/38.png",
+        discount: 25,
+        category: "Sports",
+        description: "Built for the toughest trails with reinforced toe caps and traction."
+    },
+    {
+        id: 39,
+        name: "Heritage Wingtip Brogues",
+        price: 5299,
+        rating: 4,
+        image: "images/39.png",
+        discount: 20,
+        category: "Formal",
+        description: "Intricate wingtip detailing for the modern professional."
+    },
+    {
+        id: 40,
+        name: "Sunset Leather Slides",
+        price: 1899,
+        rating: 3,
+        image: "images/40.png",
+        discount: 5,
+        category: "Sandals",
+        description: "Premium leather slides for effortless summer style."
+    },
+    {
+        id: 41,
+        name: "Alpine Heavy Duty Boots",
+        price: 7499,
+        rating: 5,
+        image: "images/41.png",
+        discount: 30,
+        category: "Boots",
+        description: "Maximum insulation and protection for extreme winter conditions."
+    },
+    {
+        id: 42,
+        name: "Boardroom Leather Slip-Ons",
+        price: 4199,
+        rating: 4,
+        image: "images/42.png",
+        discount: 15,
+        category: "Office",
+        description: "Sleek and professional slip-ons for the fast-paced executive."
+    },
+    {
+        id: 43,
+        name: "Canvas Street Cruisers",
+        price: 1999,
+        rating: 4,
+        image: "images/43.png",
+        discount: 10,
+        category: "Casual",
+        description: "Breathable canvas shoes for your everyday city commute."
+    },
+    {
+        id: 44,
+        name: "Dynamic Cross-Trainers",
+        price: 3999,
+        rating: 5,
+        image: "images/44.png",
+        discount: 15,
+        category: "Sports",
+        description: "Versatile training shoes designed for the gym and the track."
+    },
+    {
+        id: 45,
+        name: "Signature Leather Slip-Ons",
+        price: 5599,
+        rating: 5,
+        image: "images/45.png",
+        discount: 25,
+        category: "Formal",
+        description: "Make a statement with our premium leather slip-ons."
+    },
+    {
+        id: 46,
+        name: "Active Sport Floaters",
+        price: 2299,
+        rating: 4,
+        image: "images/46.png",
+        discount: 10,
+        category: "Sandals",
+        description: "Lightweight and durable floaters for all-day comfort."
+    },
+    {
+        id: 47,
+        name: "Timber Classic Work Boots",
+        price: 5899,
+        rating: 4,
+        image: "images/47.png",
+        discount: 20,
+        category: "Boots",
+        description: "Iconic work boots offering unmatched durability and style."
+    },
+    {
+        id: 48,
+        name: "Executive Comfort Derbies",
+        price: 4399,
+        rating: 5,
+        image: "images/48.png",
+        discount: 15,
+        category: "Office",
+        description: "Traditional derby styling with modern orthotic support."
+    },
+    {
+        id: 49,
+        name: "Knit Slip-On Sneakers",
+        price: 2699,
+        rating: 4,
+        image: "images/49.png",
+        discount: 12,
+        category: "Casual",
+        description: "Sock-like fit with a breathable knit upper for maximum comfort."
+    },
+    {
+        id: 50,
+        name: "Marathon Elite Runners",
+        price: 6199,
+        rating: 5,
+        image: "images/50.png",
+        discount: 20,
+        category: "Sports",
+        description: "Professional-grade running shoes engineered for marathon distances."
     }
-]
+];
 
 export const categories = [
     {
