@@ -4,7 +4,7 @@ export const products = [
         name: "Comfort Plush Sneakers",
         price: 2999,
         rating: 4,
-        image: "images/01.png",   
+        image: "images/01.webp",   
         discount: 10,
         category: "Casual",
         description: "Experience ultimate comfort with our Comfort Plush Sneakers."
