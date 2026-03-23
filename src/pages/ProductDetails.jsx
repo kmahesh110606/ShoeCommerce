@@ -1,7 +1,6 @@
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { PiArrowLeft, PiShoppingBag, PiCreditCard, PiStar, PiStarFill } from 'react-icons/pi';
 import Nav from '../assets/Nav.jsx';
-import DotGrid from '../assets/DotGrid.jsx';
 import { products } from '../../data.js';
 import { getCategoryTheme, themeToCssVars } from '../utils/categoryTheme.js';
 import { useCart } from '../utils/CartContext.jsx';
@@ -63,17 +62,7 @@ export default function ProductDetails() {
     <>
       <Nav className="navbar-overlay" themeStyle={navThemeStyle} />
       <div className="product-details-page" style={{ ...themeVars, fontFamily: 'var(--cat-font-family)' }}>
-        <DotGrid
-          dotSize={5}
-          gap={13}
-          baseColor="#121212"
-          activeColor="#939296"
-          proximity={120}
-          shockRadius={250}
-          shockStrength={5}
-          resistance={750}
-          returnDuration={1.5}
-        />
+        <div className="ambient-bg" aria-hidden="true" />
         <div
           className="product-details-shell"
           style={{

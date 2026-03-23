@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { PiArrowLeft, PiMinus, PiPlus, PiTrash, PiShieldCheck, PiShoppingBag, PiArrowRight } from 'react-icons/pi';
 import Nav from '../assets/Nav.jsx';
-import DotGrid from '../assets/DotGrid.jsx';
 import { products } from '../../data.js';
 import { useCart } from '../utils/CartContext.jsx';
 
@@ -35,17 +34,7 @@ export default function Cart() {
 
   return (
     <div className="cart-page">
-      <DotGrid
-        dotSize={5}
-        gap={13}
-        baseColor="#121212"
-        activeColor="#939296"
-        proximity={120}
-        shockRadius={250}
-        shockStrength={5}
-        resistance={750}
-        returnDuration={1.5}
-      />
+      <div className="ambient-bg" aria-hidden="true" />
       <Nav className="navbar-overlay" />
 
       <div className="cart-shell">
@@ -78,8 +67,8 @@ export default function Cart() {
                 {resolved.map(({ product, qty }) => (
                   <article
                     key={product.id}
-                    className="cart-row"
-                      >
+                    className="cart-row cart-row-animate"
+                  >
                     <img className="cart-thumb" src={product.image} alt={product.name} loading="lazy" />
 
                     <div className="cart-row-main">
@@ -132,9 +121,19 @@ export default function Cart() {
               </div>
             </div>
 
-            <Link className="btn btn-primary" to="/payment">
-              <PiArrowRight size={16} /> Proceed to payment
-            </Link>
+            {resolved.length === 0 ? (
+              <button
+                className="btn btn-primary"
+                disabled
+                title="Add items to your cart to proceed"
+              >
+                <PiArrowRight size={16} /> Proceed to payment
+              </button>
+            ) : (
+              <Link className="btn btn-primary" to="/payment">
+                <PiArrowRight size={16} /> Proceed to payment
+              </Link>
+            )}
 
             <div className="cart-note">
               <PiShieldCheck size={20} className="cart-note-icon" />

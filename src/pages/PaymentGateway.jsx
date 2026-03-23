@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { PiArrowLeft, PiQrCode, PiCreditCard, PiTruck, PiCheckCircle, PiBookmarkSimple, PiLightbulb, PiSpinnerGap } from 'react-icons/pi';
 import { QRCodeSVG } from 'qrcode.react';
 import Nav from '../assets/Nav.jsx';
-import DotGrid from '../assets/DotGrid.jsx';
 import { products } from '../../data.js';
 import { useCart } from '../utils/CartContext.jsx';
 
@@ -52,7 +51,7 @@ function PaymentGateway() {
     if (paymentState === 'processing') {
         return (
             <div className="payment-page">
-                <DotGrid dotSize={5} gap={13} baseColor="#121212" activeColor="#939296" proximity={120} shockRadius={250} shockStrength={5} resistance={750} returnDuration={1.5} />
+                <div className="ambient-bg" aria-hidden="true" />
                 <Nav className="navbar-overlay" />
                 <div className="payment-anim-container">
                     <div className="payment-anim-card">
@@ -68,7 +67,7 @@ function PaymentGateway() {
     if (paymentState === 'success') {
         return (
             <div className="payment-page">
-                <DotGrid dotSize={5} gap={13} baseColor="#121212" activeColor="#939296" proximity={120} shockRadius={250} shockStrength={5} resistance={750} returnDuration={1.5} />
+                <div className="ambient-bg" aria-hidden="true" />
                 <Nav className="navbar-overlay" />
                 <div className="payment-anim-container">
                     <div className="payment-anim-card payment-success-card">
@@ -89,17 +88,7 @@ function PaymentGateway() {
 
     return (
         <div className="payment-page">
-            <DotGrid
-                dotSize={5}
-                gap={13}
-                baseColor="#121212"
-                activeColor="#939296"
-                proximity={120}
-                shockRadius={250}
-                shockStrength={5}
-                resistance={750}
-                returnDuration={1.5}
-            />
+            <div className="ambient-bg" aria-hidden="true" />
             <Nav className="navbar-overlay" />
 
             <div className="payment-shell">

@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { PiEye, PiShoppingBag, PiStar, PiStarFill } from 'react-icons/pi';
 import { useCart } from '../utils/CartContext.jsx';
@@ -18,7 +19,7 @@ function Card({ id, name, price, rating, image, category }) {
   return (
     <div className="card">
       <div className="product-image">
-        <img src={image} alt={name} />
+        <img src={image} alt={name} loading="lazy" />
       </div>
       <div className="product-content">
         <div className="product-name">{name}</div>
@@ -39,4 +40,4 @@ function Card({ id, name, price, rating, image, category }) {
   );
 }
 
-export default Card;
+export default React.memo(Card);
